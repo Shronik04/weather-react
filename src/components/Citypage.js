@@ -5,7 +5,7 @@ export default function Citypage() {
   const [wdata, setWdata] = useState([]);
   const [city, setCity] = useState("");
   const [inp, setInp] = useState("");
-  // const apikey= 'd5e79694bfd33f6f73d1dde64087c379';
+  
   const newkey = "af67361532eb4cbc80a40157212904";
 
   useEffect(() => {
@@ -23,9 +23,9 @@ export default function Citypage() {
       });
   }, [inp]);
 
-  useEffect(() => {
-    console.log("this is data", city, "this is inot", inp);
-  }, [wdata, city, inp]);
+//   useEffect(() => {
+//     console.log("this is data", city, "this is inot", inp);
+//   }, [wdata, city, inp]);
 
   const handleCity = (e) => {
     setTimeout(() => {
@@ -52,15 +52,15 @@ export default function Citypage() {
                 <h6>{i.location.localtime.slice(11)}</h6>
               </div>
               <div>
-                {" "}
-                <img src={i.current.condition.icon} width="100px" />{" "}
+                
+                <img src={i.current.condition.icon} width="100px" />
               </div>
 
               <div class="d-flex flex-column temp mt-5 mb-3">
                 <h1 class="mb-0 font-weight-bold" id="heading">
-                  {" "}
-                  {i.current.temp_c}° C{" "}
-                </h1>{" "}
+                  
+                  {i.current.temp_c}° C
+                </h1>
                 <span class="small grey">{i.current.condition.text}</span>
                 <span class="small">Feels like {i.current.feelslike_c}° C</span>
 
@@ -72,18 +72,18 @@ export default function Citypage() {
                     <img
                       src="https://i.imgur.com/B9kqOzp.png"
                       height="17px"
-                    />{" "}
-                    <span>{i.current.wind_kph}/kmph {i.current.wind_dir}</span>{" "}
+                    />
+                    <span>{i.current.wind_kph}/kmph {i.current.wind_dir}</span>
                   </p>
                   <p class="my-1">
                  humidity:
-                    <img src={im} height="17px" />{" "}
-                    <span> {i.current.humidity}% </span>{" "}
+                    <img src={im} height="17px" />
+                    <span> {i.current.humidity}% </span>
                   </p>
                   <p class="my-1">
                  Visibility:
                    
-                    <span> {i.current.vis_km}km </span>{" "}
+                    <span> {i.current.vis_km}km </span>
                   </p>
             
                 </div>
