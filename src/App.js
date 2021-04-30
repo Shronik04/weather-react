@@ -1,11 +1,12 @@
 import './App.css';
-import Citypage from './components/Citypage';
+import './weather.css'
+import CityPage from './components/CityPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-    <Citypage />
+    <CityPage />
     </div>
   );
 }

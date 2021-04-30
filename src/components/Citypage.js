@@ -1,43 +1,37 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import im from "../assets/humidity.png";
-export default function Citypage() {
+import {debounce} from 'lodash'
+export default function CityPage() {
   const [wdata, setWdata] = useState([]);
   const [city, setCity] = useState("");
-  const [inp, setInp] = useState("");
-  
+
   const newkey = "af67361532eb4cbc80a40157212904";
 
   useEffect(() => {
     axios
-      .get(`http://api.weatherapi.com/v1/current.json?q=${inp}&key=${newkey}&aqi=yes`)
+      .get(`http://api.weatherapi.com/v1/current.json?q=${city}&key=${newkey}&aqi=yes`)
 
       .then((res) => {
-        console.log(res.data);
-        // setWdata(res.data)
+  
         setWdata([res.data]);
       })
 
       .catch((err) => {
         console.log(err);
       });
-  }, [inp]);
+  }, [city]);
 
-//   useEffect(() => {
-//     console.log("this is data", city, "this is inot", inp);
-//   }, [wdata, city, inp]);
 
-  const handleCity = (e) => {
-    setTimeout(() => {
-      setInp(e.target.value);
-    }, 2500);
-  };
+  const handleCity = debounce((text) => {
+    setCity(text)
+  },1500);
 
   return (
     <div className="bg-main">
 
-        <h1 id="headd">WELCOME TO INSTA-WEATHER</h1>
-      <input type="text" id="inpt" name="city" placeholder="Enter Location" onChange={(e) => handleCity(e)} />
+        <h1 id="heading-top">WELCOME TO INSTA-WEATHER</h1>
+      <input type="text" id="inpt" name="city" placeholder="Enter Location" onChange={(e) => handleCity(e.target.value)} />
       <br />
       <div class="row justify-content-center wbox">
         <div class="col-12 col-md-4 col-sm-12 col-xs-12">
